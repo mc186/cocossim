@@ -1,0 +1,1 @@
+git clone --recursive https://github.com/umd-memsys/DRAMsim3.git dramsim3

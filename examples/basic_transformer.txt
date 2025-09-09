@@ -1,0 +1,9 @@
+Matmul 1024 768 768
+Matmul 1024 768 768
+Matmul 1024 768 768
+SelfAttention 1024 768 768
+LayerNorm 1024 768
+Matmul 1024 768 3072
+Activation 1024 3072
+Matmul 1024 3072 768
+LayerNorm 1024 768
