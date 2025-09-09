@@ -1,0 +1,34 @@
+# Build artifacts
+build/
+*.o
+*.so
+*.dylib
+*.exe
+perf_model
+
+# CMake files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+out.vcd
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Results and output
+results/
+*.log
+*.vcd
+
+# Temporary files
+*.tmp
+*.bak
