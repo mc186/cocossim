@@ -72,9 +72,6 @@ make -j$(nproc)
 ```bash
 # Enable VCD waveform dumping for debugging
 cmake -DUSE_VCD=ON ..
-
-# Release build for performance
-cmake -DCMAKE_BUILD_TYPE=Release ..
 ```
 
 ## Usage
@@ -172,16 +169,6 @@ COCOSSim integrates with DRAMSim3 for realistic memory modeling:
 - **Dependency management**: Automatic handling of layer dependencies
 - **Load balancing**: Distribution across multiple compute units
 
-### Debug and Analysis Tools
-```bash
-# Enable VCD waveform generation
-cmake -DUSE_VCD=ON .. && make
-./perf_model [options]  # Generates out.vcd for waveform analysis
-
-# Verbose execution tracing  
-# Modify global.h to enable VERBOSE flag and rebuild
-```
-
 ## Case Studies
 
 ### 1. Model Parallelism Analysis
@@ -205,43 +192,22 @@ We welcome contributions to COCOSSim! Please follow these guidelines:
 3. **Add tests** for new functionality where applicable
 4. **Submit pull requests** with clear descriptions of changes
 
-### Development Setup
-```bash
-# Development build with debug symbols
-cmake -DCMAKE_BUILD_TYPE=Debug -DUSE_VCD=ON ..
-make -j$(nproc)
-
-# Run tests (if available)
-ctest
-```
-
 ## Citation
 
 If you use COCOSSim in your research, please cite our work:
 
 ```bibtex
-@inproceedings{cocossim2025,
-  title={COCOSSim: A Holistic Simulator for Modern Neural Network Architectures},
-  author={[Author Names]},
-  booktitle={[ISPASS]},
-  year={2025}
+@inproceedings{choudhary2025cocossim,
+  title={COCOSSim: A Cycle-Accurate Simulator for Heterogeneous Systolic Array Architectures},
+  author={Choudhary, Mansi and Kjellqvist, Chris and Ma, Jiaao and Wills, Lisa Wu},
+  booktitle={2025 IEEE International Symposium on Performance Analysis of Systems and Software (ISPASS)},
+  pages={174--185},
+  year={2025},
+  organization={IEEE}
 }
 ```
-
-## License
-
-This project is licensed under [License Type] - see the LICENSE file for details.
-
-## Support & Contact
-
-- **Issues**: Report bugs and request features via GitHub Issues
-- **Documentation**: Additional documentation available in the `/docs` folder
-- **Community**: Join our discussions in GitHub Discussions
-
 ## Acknowledgments
 
 - **DRAMSim3**: Memory system simulation framework
 - **Google TPU**: Validation reference architecture
 ---
-
-**COCOSSim** provides researchers and hardware architects with a powerful, flexible, and accurate tool for exploring the design space of modern ML accelerators. With its comprehensive modeling capabilities and proven validation results, COCOSSim enables confident architectural decisions in the rapidly evolving landscape of neural network hardware.
