@@ -113,7 +113,7 @@ int main(int argc, char **argv) {
 
   uint64_t last_cycles = res[periods - 1].cycles;
   auto lc = (double) last_cycles;
-  auto expected_c = static_cast<double>(for_one);
+  auto expected_c = (double)res[0].cycles;
   double ratio = lc / expected_c;
   printf("Drain Ratio: %f\n", ratio);
 
