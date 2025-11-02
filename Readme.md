@@ -79,10 +79,10 @@ cmake -DUSE_VCD=ON ..
 ### Basic Simulation
 ```bash
 # Standard neural network simulation
-./perf_model -c 1 -sa_sz 64 -sz_vu 64 -f 1 -i layers.txt -o results.txt
+./perf_model -c 1 -sa_sz 64 -vu_sz 64 -f 1 -i layers.txt -o results.txt
 
 # Weight Stationary mode
-./perf_model -c 1 -sa_sz 64 -sz_vu 64 -ws 1 -f 1 -i layers.txt -o results.txt
+./perf_model -c 1 -sa_sz 64 -vu_sz 64 -ws 1 -f 1 -i layers.txt -o results.txt
 ```
 
 ### Command Line Options
@@ -96,7 +96,7 @@ cmake -DUSE_VCD=ON ..
 #### Architecture-Specific Options
 - `-c <int>`: Number of compute cores
 - `-sa_sz <int>`: Systolic array size (e.g., 64 for 64×64 array)
-- `-sz_vu <int>`: Vector unit size
+- `-vu_sz <int>`: Vector unit size
 - `-ws <0|1>`: Dataflow mode (0=Output Stationary, 1=Weight Stationary)
 
 ### Layer Configuration Format
@@ -129,12 +129,12 @@ BatchNorm 256 64 64
 ## Example Use Cases
 ```bash
 # Compare Output Stationary vs Weight Stationary
-./perf_model -c 1 -sa_sz 64 -sz_vu 64 -ws 0 -f 1 -i model.txt -o os_results.txt
-./perf_model -c 1 -sa_sz 64 -sz_vu 64 -ws 1 -f 1 -i model.txt -o ws_results.txt
+./perf_model -c 1 -sa_sz 64 -vu_sz 64 -ws 0 -f 1 -i model.txt -o os_results.txt
+./perf_model -c 1 -sa_sz 64 -vu_sz 64 -ws 1 -f 1 -i model.txt -o ws_results.txt
 
 # Compare different array sizes
-./perf_model -c 1 -sa_sz 32 -sz_vu 32 -f 1 -i model.txt -o small_results.txt
-./perf_model -c 1 -sa_sz 128 -sz_vu 128 -f 1 -i model.txt -o large_results.txt
+./perf_model -c 1 -sa_sz 32 -vu_sz 32 -f 1 -i model.txt -o small_results.txt
+./perf_model -c 1 -sa_sz 128 -vu_sz 128 -f 1 -i model.txt -o large_results.txt
 ```
 
 ## Output Analysis
