@@ -72,8 +72,23 @@ RuntimeStats_t *Arch::get_cycles(TimeBasedEnqueue &time_enqueues) {
   std::vector<std::vector<Job *>> core_queues(states.size());
   
   std::function<void(Job *)> enqueue_job = [&](Job *job) -> void {
-    int target_core = (job->core_id >= 0 && job->core_id < states.size()) ? job->core_id : 0;
-    core_queues[target_core].push_back(job);
+    if (job->core_id >= 0 && job->core_id < states.size()) {
+    core_queues[job->core_id].push_back(job);     // Specific core requested
+    } else {
+      // core_id == -1: Find ANY available core of the matching type
+      bool assigned = false;
+      for (int core_idx = 0; core_idx < states.size(); ++core_idx) {
+        if (states[core_idx]->get_ty_idx() == job->get_type()) {
+          core_queues[core_idx].push_back(job);
+          assigned = true;
+          break;
+        }
+      }
+      if (!assigned) {
+        // Fallback: assign to first core (shouldn't happen if architecture is correct)
+        core_queues[0].push_back(job);
+      }
+    }
     total_frontier += 1;
   };
 
