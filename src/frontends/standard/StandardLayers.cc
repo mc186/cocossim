@@ -81,7 +81,7 @@ JobPair Matmul(const ArchConfig &a_config, const LayerConfig &l_config) {
       } else {
         // Fallback: sequential jobs if buffer too small
         std::cout << "  Core " << core << ": " << core_n << " out dim - not bufferable, using sequential execution" << std::endl;
-        float new_N_f = (float) buffer_size_bytes / float(data_type_width * M * batch_size) - (float) a_config.sa_sz_allo;
+        float new_N_f = (float) buffer_size_bytes / float(data_type_width * M * batch_size);
         int N_per_job = std::max(1, (int) std::floor(new_N_f));
         int num_sequential_jobs = (core_n + N_per_job - 1) / N_per_job;
         
@@ -167,7 +167,7 @@ JobPair Conv(const ArchConfig &a_config, const LayerConfig &l_config) {
       } else {
         // Sequential execution for this core's portion
         std::cout << "  Core " << core << ": " << core_n << " out dim - not bufferable, using sequential execution" << std::endl;
-        float new_N_f = (float) buffer_size_bytes / float(data_type_width * M * batch_size) - (float) a_config.sa_sz_allo;
+        float new_N_f = (float) buffer_size_bytes / float(data_type_width * M * batch_size);
         int N_per_job = std::max(1, (int) std::floor(new_N_f));
         int num_sequential_jobs = (core_n + N_per_job - 1) / N_per_job;
         
