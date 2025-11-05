@@ -1,12 +1,10 @@
-Conv 64 224 224 64
-Activation 64 222 222
-Conv 64 112 112 128
-Activation 64 110 110
-Conv 64 110 110 128
-Activation 64 108 108
-Conv 64 54 54 256
-Activation 64 52 52
-Conv 64 52 52 256
-Activation 64 50 50
-Matmul 64 12800 1000
-Softmax 64 1000
+Conv 1 64 224 224 64
+Activation 1 64 222
+Conv 1 64 112 112 128
+Activation 1 64 110
+Conv 1 64 110 110 128
+Activation 1 64 108
+Conv 1 64 54 54 256
+Activation 1 64 52
+Conv 1 64 52 52 256
+Activation 1 64 50
